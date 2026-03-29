@@ -103,3 +103,11 @@ body {
 .typing-dot:nth-child(3) {
   animation-delay: 0.4s;
 }
+
+/* Reduced motion — showcase static fallback */
+@media (prefers-reduced-motion: reduce) {
+  .showcase-static {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
