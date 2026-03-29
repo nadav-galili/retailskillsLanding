@@ -85,18 +85,18 @@ export default function ContactForm() {
   }
 
   const inputClassName =
-    "w-full bg-surface border border-border rounded-lg px-4 py-3 text-text-primary placeholder:text-text-secondary/50 focus:border-accent focus:outline-none transition-colors";
+    "w-full bg-surface-lowest border border-border rounded-md px-4 py-3 text-text-primary placeholder:text-text-secondary/50 focus:border-primary focus:shadow-[0_0_8px_rgba(153,247,255,0.15)] focus:outline-none transition-all";
   const labelClassName = "block text-sm font-medium text-text-secondary mb-2";
 
   if (submitted) {
     return (
-      <div className="bg-surface-card border border-border rounded-2xl p-12 text-center">
-        <CheckCircle className="text-accent mx-auto mb-6" size={64} />
+      <div className="bg-surface-card rounded-xl p-12 text-center">
+        <CheckCircle className="text-primary mx-auto mb-6" size={64} />
         <h2 className="text-2xl font-bold mb-4">הפנייה נשלחה בהצלחה!</h2>
         <p className="text-text-secondary mb-6">
           נחזור אליכם בהקדם. בינתיים, מוזמנים לנסות את הדמו שלנו.
         </p>
-        <Link href="/demo" className="text-accent">
+        <Link href="/demo" className="text-primary">
           נסה את הדמו &larr;
         </Link>
       </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="bg-surface-card border border-border rounded-2xl p-8 md:p-12"
+      className="bg-surface-card rounded-xl p-8 md:p-12"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* שם מלא */}
@@ -126,7 +126,7 @@ export default function ContactForm() {
             className={inputClassName}
           />
           {errors.name && (
-            <p className="text-red-400 text-sm mt-1">{errors.name}</p>
+            <p className="text-tertiary text-sm mt-1">{errors.name}</p>
           )}
         </div>
 
@@ -146,7 +146,7 @@ export default function ContactForm() {
             className={inputClassName}
           />
           {errors.company && (
-            <p className="text-red-400 text-sm mt-1">{errors.company}</p>
+            <p className="text-tertiary text-sm mt-1">{errors.company}</p>
           )}
         </div>
 
@@ -182,7 +182,7 @@ export default function ContactForm() {
             className={inputClassName}
           />
           {errors.email && (
-            <p className="text-red-400 text-sm mt-1">{errors.email}</p>
+            <p className="text-tertiary text-sm mt-1">{errors.email}</p>
           )}
         </div>
       </div>
@@ -200,7 +200,7 @@ export default function ContactForm() {
                 type="checkbox"
                 checked={formData.interests.includes(option)}
                 onChange={() => handleCheckbox(option)}
-                className="w-4 h-4 accent-accent rounded border-border"
+                className="w-4 h-4 accent-primary rounded border-border"
               />
               {option}
             </label>
@@ -228,7 +228,7 @@ export default function ContactForm() {
       <div className="mt-8">
         <button
           type="submit"
-          className="w-full md:w-auto bg-cta hover:bg-cta-hover text-white font-semibold rounded-xl px-8 py-4 text-lg transition-colors"
+          className="w-full md:w-auto bg-gradient-to-r from-primary-light to-primary text-on-primary font-semibold rounded-md px-8 py-4 text-lg transition-shadow hover:neon-glow"
         >
           שלח פנייה
         </button>

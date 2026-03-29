@@ -22,7 +22,7 @@ export default function ContactPage() {
           href="https://wa.me/972500000000"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent"
+          className="text-primary"
         >
           💬 שלחו לנו הודעה בוואטסאפ
         </a>

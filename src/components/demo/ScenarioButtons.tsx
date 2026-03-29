@@ -18,7 +18,7 @@ export default function ScenarioButtons({
           key={scenario.label}
           onClick={() => onSelect(scenario.message)}
           disabled={disabled}
-          className="whitespace-nowrap bg-surface-card border border-border rounded-full px-4 py-2 text-sm text-text-primary hover:border-accent/50 transition-colors disabled:opacity-50"
+          className="whitespace-nowrap bg-surface-card rounded-lg px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-surface-highest transition-colors disabled:opacity-50"
         >
           {scenario.label}
         </button>

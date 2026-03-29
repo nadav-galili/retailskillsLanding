@@ -1,21 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1e3a5f;
-  --color-primary-light: #2a4f7f;
-  --color-primary-dark: #152a45;
-  --color-accent: #00b4d8;
-  --color-accent-light: #33c9e6;
-  --color-accent-dark: #0090ad;
-  --color-cta: #f77f00;
-  --color-cta-hover: #e06f00;
-  --color-surface: #0a0f1c;
-  --color-surface-elevated: #111827;
-  --color-surface-card: #1a2744;
-  --color-text-primary: #f0f4f8;
-  --color-text-secondary: #94a3b8;
-  --color-border: #2a3f5f;
+  /* Neon Editorial — Primary (neon cyan) */
+  --color-primary: #99f7ff;
+  --color-primary-light: #00f1fe;
+  --color-primary-dark: #66d4dd;
 
+  /* Aliases for backward compat (accent → primary) */
+  --color-accent: #99f7ff;
+  --color-accent-light: #00f1fe;
+  --color-accent-dark: #66d4dd;
+
+  /* Secondary (neon green) & Tertiary (yellow) */
+  --color-secondary: #2ff801;
+  --color-secondary-container: #1a3a0a;
+  --color-tertiary: #fff252;
+
+  /* CTA — neon gradient endpoints */
+  --color-cta: #00f1fe;
+  --color-cta-hover: #33f5fe;
+
+  /* On-colors (text on colored backgrounds) */
+  --color-on-primary: #0e0e0e;
+
+  /* Surface architecture — The Abyssal Foundation */
+  --color-surface: #0e0e0e;
+  --color-surface-lowest: #000000;
+  --color-surface-elevated: #131313;
+  --color-surface-card: #1a1919;
+  --color-surface-high: #201f1f;
+  --color-surface-highest: #262626;
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #adaaaa;
+
+  /* Ghost border — felt, not seen */
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  /* Font */
   --font-heebo: "Heebo", sans-serif;
 }
 
@@ -23,6 +46,26 @@ body {
   background-color: var(--color-surface);
   color: var(--color-text-primary);
   font-family: var(--font-heebo);
+}
+
+/* Neon Editorial — Neon Glow Utilities */
+.neon-glow {
+  box-shadow: 0 0 32px rgba(153, 247, 255, 0.12);
+}
+
+.neon-glow-strong {
+  box-shadow: 0 0 64px rgba(153, 247, 255, 0.15);
+}
+
+.neon-glow-green {
+  box-shadow: 0 0 32px rgba(47, 248, 1, 0.12);
+}
+
+/* Neon Editorial — Glassmorphism */
+.glass {
+  background: rgba(14, 14, 14, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 /* Scroll-triggered animation base */

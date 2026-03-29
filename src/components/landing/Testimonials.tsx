@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react";
+import Card from "@/components/ui/Card";
 
 const testimonials = [
   {
@@ -21,18 +22,15 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-surface-elevated/50">
+    <section className="py-28 bg-surface-elevated">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">
           מה אומרים הלקוחות שלנו
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.author}
-              className="bg-surface-card border border-border rounded-2xl p-8"
-            >
-              <Quote size={32} className="text-accent/20 mb-4" />
+            <Card key={testimonial.author}>
+              <Quote size={32} className="text-primary/20 mb-4" />
               <p className="text-text-primary mb-6 text-lg">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
@@ -40,7 +38,7 @@ export default function Testimonials() {
                 <div className="font-bold">{testimonial.author}</div>
                 <div className="text-text-secondary">{testimonial.role}</div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

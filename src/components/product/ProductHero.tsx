@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 interface ProductHeroProps {
   title: string;
@@ -14,19 +14,19 @@ export default function ProductHero({
   ctaHref,
 }: ProductHeroProps) {
   return (
-    <section className="min-h-[50vh] flex items-center bg-gradient-to-b from-primary-dark to-surface">
-      <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
-        <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
+    <section className="relative min-h-[50vh] flex items-center bg-surface overflow-hidden">
+      {/* Neon glow orb */}
+      <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[80px]" />
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.04em] mb-6">{title}</h1>
+        <p className="text-sm text-text-secondary mb-8 max-w-[60ch] mx-auto">
           {subtitle}
         </p>
         {ctaText && ctaHref && (
-          <Link
-            href={ctaHref}
-            className="inline-block bg-cta hover:bg-cta-hover text-white rounded-xl px-8 py-4 text-lg font-semibold transition-colors"
-          >
+          <Button href={ctaHref} variant="primary" size="lg">
             {ctaText}
-          </Link>
+          </Button>
         )}
       </div>
     </section>

@@ -9,7 +9,7 @@ const products = [
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-elevated border-t border-border">
+    <footer className="bg-surface-elevated">
       <div className="max-w-7xl mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company */}
@@ -78,7 +78,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-10 pt-6 border-t border-border text-center text-text-secondary text-sm">
+        <div className="mt-10 pt-6 text-center text-text-secondary text-sm">
           &copy; 2024 Retail-Skillz. כל הזכויות שמורות.
         </div>
       </div>

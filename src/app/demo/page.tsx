@@ -7,14 +7,14 @@ export default function DemoPage() {
   return (
     <div className="fixed inset-0 z-[100] bg-surface flex flex-col">
       {/* Top bar */}
-      <div className="bg-surface-elevated border-b border-border px-4 py-3 flex items-center justify-between">
+      <div className="glass px-4 py-3 flex items-center justify-between">
         <Link
           href="/"
-          className="text-accent text-sm hover:underline transition-colors"
+          className="text-primary text-sm hover:underline transition-colors"
         >
           &larr; חזרה לאתר
         </Link>
-        <span className="text-lg font-bold text-accent">Retail-Skillz</span>
+        <span className="text-lg font-bold text-primary">Retail-Skillz</span>
       </div>
 
       {/* Chat area */}
@@ -23,7 +23,7 @@ export default function DemoPage() {
       </div>
 
       {/* Bottom disclaimer */}
-      <div className="bg-surface-elevated border-t border-border px-4 py-2 text-center text-xs text-text-secondary">
+      <div className="bg-surface-elevated px-4 py-2 text-center text-xs text-text-secondary">
         🔬 זהו דמו עם נתונים מדומים | Powered by Claude AI
       </div>
     </div>

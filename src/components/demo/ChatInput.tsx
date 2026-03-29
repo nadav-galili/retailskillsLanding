@@ -38,7 +38,7 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
   };
 
   return (
-    <div className="bg-surface-elevated border-t border-border p-4 flex gap-3 items-end">
+    <div className="bg-surface-elevated p-4 flex gap-3 items-end">
       <textarea
         ref={textareaRef}
         value={value}
@@ -47,12 +47,12 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
         disabled={disabled}
         placeholder="כתבו הודעה..."
         rows={1}
-        className="bg-surface border border-border rounded-xl px-4 py-3 flex-1 text-text-primary placeholder:text-text-secondary/50 resize-none focus:outline-none focus:border-accent/50 transition-colors disabled:opacity-50 disabled:pointer-events-none"
+        className="bg-surface-lowest border border-border rounded-md px-4 py-3 flex-1 text-text-primary placeholder:text-text-secondary/50 resize-none focus:outline-none focus:border-primary focus:shadow-[0_0_8px_rgba(153,247,255,0.15)] transition-all disabled:opacity-50 disabled:pointer-events-none"
       />
       <button
         onClick={handleSend}
         disabled={disabled || !value.trim()}
-        className="bg-accent hover:bg-accent-light text-white rounded-xl p-3 transition-colors disabled:opacity-50 disabled:pointer-events-none"
+        className="bg-gradient-to-r from-primary-light to-primary text-on-primary rounded-md p-3 transition-shadow hover:neon-glow disabled:opacity-50 disabled:pointer-events-none"
       >
         <Send className="w-5 h-5" />
       </button>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 interface ProductCTAProps {
   headline: string;
@@ -16,23 +16,17 @@ export default function ProductCTA({
   secondaryHref,
 }: ProductCTAProps) {
   return (
-    <section className="py-16 bg-primary/20">
+    <section className="py-20 bg-surface-elevated">
       <div className="text-center max-w-3xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8">{headline}</h2>
         <div className="flex flex-col items-center gap-4">
-          <Link
-            href={ctaHref}
-            className="inline-block bg-cta hover:bg-cta-hover text-white rounded-xl px-8 py-4 text-lg font-semibold transition-colors"
-          >
+          <Button href={ctaHref} variant="primary" size="lg">
             {ctaText}
-          </Link>
+          </Button>
           {secondaryText && secondaryHref && (
-            <Link
-              href={secondaryHref}
-              className="text-accent hover:underline transition-colors"
-            >
+            <Button href={secondaryHref} variant="tertiary">
               {secondaryText}
-            </Link>
+            </Button>
           )}
         </div>
       </div>

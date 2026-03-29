@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import ProductHero from "@/components/product/ProductHero";
 import FeatureGrid from "@/components/product/FeatureGrid";
 import ProductCTA from "@/components/product/ProductCTA";
+import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
 import type { Feature } from "@/types";
 
 export const metadata: Metadata = {
@@ -81,33 +82,27 @@ export default function WhatsAppBotPage() {
       <FeatureGrid features={features} />
 
       {/* Use Cases */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-7xl mx-auto px-4 py-20">
         <h2 className="text-3xl font-bold text-center mb-12">למי זה מתאים?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {useCases.map((useCase) => (
-            <div
-              key={useCase.role}
-              className="bg-surface-card border border-border rounded-2xl p-8"
-            >
+            <Card key={useCase.role}>
               <h3 className="font-bold text-lg mb-2">{useCase.role}</h3>
               <p className="text-text-secondary">{useCase.description}</p>
-            </div>
+            </Card>
           ))}
         </div>
       </section>
 
       {/* Pricing Hint */}
-      <section className="bg-surface-elevated/50 py-12">
+      <section className="bg-surface-elevated py-12">
         <div className="text-center max-w-3xl mx-auto px-4">
           <p className="text-lg text-text-secondary mb-6">
             מתחיל מ-₪499 לחודש. המחיר נקבע לפי מספר קבוצות וחנויות.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-cta hover:bg-cta-hover text-white rounded-xl px-8 py-4 text-lg font-semibold transition-colors"
-          >
+          <Button href="/contact" variant="primary" size="lg">
             קבל הצעת מחיר
-          </Link>
+          </Button>
         </div>
       </section>
 

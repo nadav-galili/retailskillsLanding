@@ -66,7 +66,7 @@ export default function DashboardsPage() {
           {integrations.map((name) => (
             <div
               key={name}
-              className="border border-border rounded-2xl p-6 text-center font-semibold text-lg bg-surface-card hover:border-accent/50 transition-colors"
+              className="rounded-xl p-6 text-center font-semibold text-lg bg-surface-card border border-transparent hover:border-primary-dark hover:bg-surface-highest transition-all"
             >
               {name}
             </div>
@@ -81,32 +81,32 @@ export default function DashboardsPage() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Mockup Card 1 — Sales */}
-          <div className="bg-surface-card border border-border rounded-2xl p-8">
+          <div className="bg-surface-card rounded-xl p-8">
             <h3 className="font-semibold text-lg mb-2">מכירות יומיות</h3>
-            <p className="text-3xl font-bold text-accent mb-6">₪48,230</p>
+            <p className="text-3xl font-bold text-primary mb-6">₪48,230</p>
             <div className="flex items-end gap-2 h-32">
-              <div className="flex-1 bg-accent/30 rounded-t-md" style={{ height: "40%" }} />
-              <div className="flex-1 bg-accent/30 rounded-t-md" style={{ height: "65%" }} />
-              <div className="flex-1 bg-accent/30 rounded-t-md" style={{ height: "50%" }} />
-              <div className="flex-1 bg-accent/30 rounded-t-md" style={{ height: "80%" }} />
-              <div className="flex-1 bg-accent/30 rounded-t-md" style={{ height: "70%" }} />
-              <div className="flex-1 bg-accent rounded-t-md" style={{ height: "95%" }} />
-              <div className="flex-1 bg-accent/50 rounded-t-md" style={{ height: "60%" }} />
+              <div className="flex-1 bg-primary/20 rounded-t-md" style={{ height: "40%" }} />
+              <div className="flex-1 bg-primary/20 rounded-t-md" style={{ height: "65%" }} />
+              <div className="flex-1 bg-primary/20 rounded-t-md" style={{ height: "50%" }} />
+              <div className="flex-1 bg-primary/20 rounded-t-md" style={{ height: "80%" }} />
+              <div className="flex-1 bg-primary/20 rounded-t-md" style={{ height: "70%" }} />
+              <div className="flex-1 bg-primary/60 rounded-t-md" style={{ height: "95%" }} />
+              <div className="flex-1 bg-primary/30 rounded-t-md" style={{ height: "60%" }} />
             </div>
           </div>
 
           {/* Mockup Card 2 — Metrics */}
-          <div className="bg-surface-card border border-border rounded-2xl p-8">
+          <div className="bg-surface-card rounded-xl p-8">
             <h3 className="font-semibold text-lg mb-2">ביצועי סניפים</h3>
-            <p className="text-3xl font-bold text-accent mb-6">12 סניפים</p>
+            <p className="text-3xl font-bold text-primary mb-6">12 סניפים</p>
             <div className="flex items-end gap-2 h-32">
-              <div className="flex-1 bg-primary/40 rounded-t-md" style={{ height: "90%" }} />
-              <div className="flex-1 bg-primary/40 rounded-t-md" style={{ height: "75%" }} />
-              <div className="flex-1 bg-primary/40 rounded-t-md" style={{ height: "85%" }} />
-              <div className="flex-1 bg-primary/40 rounded-t-md" style={{ height: "60%" }} />
-              <div className="flex-1 bg-primary/40 rounded-t-md" style={{ height: "70%" }} />
-              <div className="flex-1 bg-primary rounded-t-md" style={{ height: "100%" }} />
-              <div className="flex-1 bg-primary/40 rounded-t-md" style={{ height: "55%" }} />
+              <div className="flex-1 bg-secondary/30 rounded-t-md" style={{ height: "90%" }} />
+              <div className="flex-1 bg-secondary/30 rounded-t-md" style={{ height: "75%" }} />
+              <div className="flex-1 bg-secondary/30 rounded-t-md" style={{ height: "85%" }} />
+              <div className="flex-1 bg-secondary/30 rounded-t-md" style={{ height: "60%" }} />
+              <div className="flex-1 bg-secondary/30 rounded-t-md" style={{ height: "70%" }} />
+              <div className="flex-1 bg-secondary/60 rounded-t-md" style={{ height: "100%" }} />
+              <div className="flex-1 bg-secondary/30 rounded-t-md" style={{ height: "55%" }} />
             </div>
           </div>
         </div>

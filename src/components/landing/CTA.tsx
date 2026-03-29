@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export default function CTA() {
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-primary to-primary-dark">
+    <section className="w-full py-28 bg-surface-high">
       <div className="max-w-3xl mx-auto text-center px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
           מוכנים לשדרג את הרשת שלכם?
@@ -11,18 +11,12 @@ export default function CTA() {
           הצטרפו לרשתות שכבר חוסכות זמן, כסף ותפעול עם Retail-Skillz
         </p>
         <div className="flex flex-col items-center gap-4">
-          <Link
-            href="/contact"
-            className="bg-cta hover:bg-cta-hover text-white rounded-xl px-8 py-4 text-lg font-semibold transition-colors"
-          >
+          <Button href="/contact" variant="primary" size="lg">
             קבע הדגמה חינם
-          </Link>
-          <Link
-            href="/demo"
-            className="text-accent hover:text-accent-light transition-colors"
-          >
+          </Button>
+          <Button href="/demo" variant="tertiary">
             או נסה את הבוט עכשיו &larr;
-          </Link>
+          </Button>
         </div>
       </div>
     </section>
