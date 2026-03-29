@@ -1,15 +1,7 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useState, useEffect, useCallback, useRef } from "react";
-
-interface Character {
-  char: string;
-  x: number;
-  y: number;
-  speed: number;
-}
-
-const CHARS = "אבגדהוזחטיכלמנסעפצקרשת0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
 
 export function ScrambledText({
   phrases,
@@ -114,92 +106,39 @@ export function ScrambledText({
   return <span ref={elementRef} className={className} />;
 }
 
-export default function RainingLetters() {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [activeIndices, setActiveIndices] = useState<Set<number>>(new Set());
+const BEAM_COUNT = 50;
 
-  const createCharacters = useCallback(() => {
-    const charCount = 200;
-    const newCharacters: Character[] = [];
-
-    for (let i = 0; i < charCount; i++) {
-      newCharacters.push({
-        char: CHARS[Math.floor(Math.random() * CHARS.length)],
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        speed: 0.05 + Math.random() * 0.15,
-      });
-    }
-
-    return newCharacters;
-  }, []);
+export default function BackgroundBeams() {
+  const [beams, setBeams] = useState<Array<{ id: number; style: CSSProperties }>>([]);
 
   useEffect(() => {
-    setCharacters(createCharacters());
-  }, [createCharacters]);
+    const generated = Array.from({ length: BEAM_COUNT }).map((_, i) => {
+      const riseDur = Math.random() * 2 + 4;
+      const fadeDur = riseDur;
+      const dropDur = Math.random() * 3 + 3;
 
-  useEffect(() => {
-    const updateActiveIndices = () => {
-      const newActiveIndices = new Set<number>();
-      const numActive = Math.floor(Math.random() * 2) + 2;
-      for (let i = 0; i < numActive; i++) {
-        newActiveIndices.add(Math.floor(Math.random() * characters.length));
-      }
-      setActiveIndices(newActiveIndices);
-    };
-
-    const flickerInterval = setInterval(updateActiveIndices, 80);
-    return () => clearInterval(flickerInterval);
-  }, [characters.length]);
-
-  useEffect(() => {
-    let animationFrameId: number;
-
-    const updatePositions = () => {
-      setCharacters((prevChars) =>
-        prevChars.map((char) => ({
-          ...char,
-          y: char.y + char.speed,
-          ...(char.y >= 100 && {
-            y: -5,
-            x: Math.random() * 100,
-            char: CHARS[Math.floor(Math.random() * CHARS.length)],
-          }),
-        }))
-      );
-      animationFrameId = requestAnimationFrame(updatePositions);
-    };
-
-    animationFrameId = requestAnimationFrame(updatePositions);
-    return () => cancelAnimationFrame(animationFrameId);
+      return {
+        id: i,
+        style: {
+          left: `${Math.random() * 100}%`,
+          width: `${Math.floor(Math.random() * 2) + 1}px`,
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${riseDur}s, ${fadeDur}s, ${dropDur}s`,
+        } as CSSProperties,
+      };
+    });
+    setBeams(generated);
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-      {characters.map((char, index) => {
-        const isActive = activeIndices.has(index);
-        return (
-          <span
-            key={index}
-            className="absolute text-xs font-light"
-            style={{
-              left: `${char.x}%`,
-              top: `${char.y}%`,
-              transform: `translate(-50%, -50%) ${isActive ? "scale(1.2)" : "scale(1)"}`,
-              color: isActive ? "#00f1fe" : "rgba(153, 247, 255, 0.08)",
-              textShadow: isActive
-                ? "0 0 8px rgba(0, 241, 254, 0.6), 0 0 16px rgba(0, 241, 254, 0.3)"
-                : "none",
-              opacity: isActive ? 1 : 0.3,
-              transition: "color 0.1s, transform 0.1s, text-shadow 0.1s",
-              willChange: "transform, top",
-              fontSize: "1.2rem",
-            }}
-          >
-            {char.char}
-          </span>
-        );
-      })}
+    <div className="beam-scene absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div className="beam-floor" />
+      <div className="beam-column" />
+      <div className="beam-container">
+        {beams.map((beam) => (
+          <div key={beam.id} className="light-beam" style={beam.style} />
+        ))}
+      </div>
     </div>
   );
 }

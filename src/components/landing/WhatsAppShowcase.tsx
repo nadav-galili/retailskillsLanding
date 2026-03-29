@@ -13,7 +13,7 @@ import {
 import PhoneMockup from "./PhoneMockup";
 import ShowcaseMessage from "./ShowcaseMessage";
 import FeatureCallout from "./FeatureCallout";
-import RainingLetters, { ScrambledText } from "./RainingLetters";
+import BackgroundBeams, { ScrambledText } from "./RainingLetters";
 import Button from "@/components/ui/Button";
 
 const heroScramblePhrases = [
@@ -323,12 +323,12 @@ export default function WhatsAppShowcase() {
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
 
-        {/* Raining letters background — fades with hero */}
+        {/* Light beams background — fades with hero */}
         <motion.div
           style={{ opacity: heroOpacity }}
           className="absolute inset-0 z-10"
         >
-          <RainingLetters />
+          <BackgroundBeams />
         </motion.div>
 
         {/* Hero — split layout: text + floating illustration */}
