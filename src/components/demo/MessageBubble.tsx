@@ -37,30 +37,28 @@ export default function MessageBubble({
 }: MessageBubbleProps) {
   return (
     <div
-      className={cn("flex mb-4", isUser ? "justify-end" : "justify-start")}
+      className={cn("flex mb-3", isUser ? "justify-end" : "justify-start")}
     >
-      <div className="max-w-[80%]">
-        <div
+      <div
+        className={cn(
+          "max-w-[80%] px-3 py-2 rounded-lg text-sm leading-relaxed",
+          isUser
+            ? "bg-wa-bubble-user text-text-primary rounded-bl-sm"
+            : "bg-surface-elevated text-text-primary rounded-br-sm"
+        )}
+      >
+        {formatContent(content)}
+        <span
           className={cn(
-            "px-4 py-3 rounded-2xl text-sm leading-relaxed",
-            isUser
-              ? "bg-[#005c4b] text-white rounded-bl-sm"
-              : "bg-surface-card text-text-primary rounded-br-sm"
-          )}
-        >
-          {formatContent(content)}
-        </div>
-        <div
-          className={cn(
-            "text-xs text-text-secondary/60 mt-1",
-            isUser ? "text-end" : "text-start"
+            "float-end text-[10px] ms-3 mt-1 leading-none translate-y-1",
+            isUser ? "text-text-primary/50" : "text-text-secondary/50"
           )}
         >
           {timestamp.toLocaleTimeString("he-IL", {
             hour: "2-digit",
             minute: "2-digit",
           })}
-        </div>
+        </span>
       </div>
     </div>
   );

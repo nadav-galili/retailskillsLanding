@@ -39,8 +39,9 @@ Hebrew RTL marketing site for Retail-Skillz built with **Next.js 16 App Router**
 Configured via `@theme` block in `src/app/globals.css` (no `tailwind.config.ts`). Color tokens:
 
 - **Primary** (neon cyan): `primary` (#99f7ff), `primary-light` (#00f1fe / primary_container), `primary-dark` (#66d4dd / primary_dim)
-- **Secondary** (neon green): `secondary` (#2ff801)
-- **Tertiary** (yellow): `tertiary` (#fff252) — warnings, badges only
+- **Secondary** (neon green): `secondary` (#39FF14), `secondary-dim` (#2ed611) — active states, stat accents, step badges, feature callout icons, hover highlights, background glow orbs
+- **Tertiary** (neon yellow): `tertiary` (#FFF01F), `tertiary-dim` (#d9cc1a) — eyebrow labels, warnings, badges, stat highlights, step accents, alert backgrounds, subtle glow orbs
+- **WhatsApp**: `wa-header` (#1a2e35), `wa-bubble-user` (#005c4b) — scoped to WhatsApp chat UI
 - **CTA**: `cta` (#00f1fe), `cta-hover` (#33f5fe) — gradient endpoints
 - **On-primary**: `on-primary` (#0e0e0e) — dark text on neon backgrounds
 - **Surfaces**: `surface` (#0e0e0e), `surface-lowest` (#000000), `surface-elevated` (#131313), `surface-card` (#1a1919), `surface-high` (#201f1f), `surface-highest` (#262626)

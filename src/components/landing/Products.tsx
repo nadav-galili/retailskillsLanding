@@ -10,6 +10,7 @@ const products = [
       "ניתוח אוטומטי של קבוצות וואטסאפ, סיכומים יומיים, התראות חריגות ומענה חכם — ישירות לנייד של המנהלים.",
     href: "/whatsapp-bot",
     badge: "נסה דמו חי",
+    iconColor: "text-primary",
   },
   {
     icon: BarChart3,
@@ -18,6 +19,7 @@ const products = [
       "דשבורדים אינטראקטיביים שמחברים נתוני מכירות, מלאי ותפעול לתמונה אחת ברורה — בזמן אמת.",
     href: "/dashboards",
     badge: null,
+    iconColor: "text-secondary",
   },
   {
     icon: GraduationCap,
@@ -26,6 +28,7 @@ const products = [
       "מערכת הדרכות דיגיטלית לעובדי קמעונאות — קליטה, הכשרה מקצועית ומעקב התקדמות אוטומטי.",
     href: "/learning",
     badge: null,
+    iconColor: "text-tertiary",
   },
 ];
 
@@ -38,7 +41,7 @@ export default function Products() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {products.map((product) => (
           <Card key={product.href} interactive>
-            <product.icon size={40} className="text-primary mb-4" />
+            <product.icon size={40} className={`${product.iconColor} mb-4`} />
             <h3 className="text-xl font-bold mb-3">{product.title}</h3>
             {product.badge && (
               <span className="inline-block bg-tertiary/15 text-tertiary text-[0.6875rem] uppercase tracking-[0.1em] font-semibold px-3 py-1 rounded-lg mb-3">

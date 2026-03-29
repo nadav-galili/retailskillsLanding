@@ -65,7 +65,8 @@ Traditional drop shadows are forbidden. We use light emission and surface nestin
 
 ### Do
 * **DO** use extreme whitespace (`spacing.20` and `spacing.24`) between major sections to emphasize the "Editorial" look.
-* **DO** use `tertiary` (#fff252) sparingly for "Warning" states or "New Feature" badges—it is a high-utility accent, not a decorative one.
+* **DO** use `secondary` (#39FF14) as a high-energy accent beyond just active states—stat highlights, step badges, feature callout icons, hover effects on interactive elements, and subtle background glow orbs (`bg-secondary/5`). It brings the "Kinetic" energy.
+* **DO** use `tertiary` (#FFF01F) as a warm counterpoint—eyebrow labels, warning states, "New" badges, stat highlights, step accents, alert backgrounds (`bg-tertiary/10`), and subtle glow orbs (`bg-tertiary/3`). It adds depth to the cyan+green palette.
 * **DO** align text-heavy blocks to a tight column (e.g., 60ch width) to maintain readability amidst the dark background.
 
 ### Don't
@@ -97,14 +98,19 @@ The Tailwind v4 `@theme` block in `globals.css` maps design system tokens to CSS
 | `on_primary` | `--color-on-primary` | `text-on-primary` | #0e0e0e |
 | `on_surface` | `--color-text-primary` | `text-text-primary` | #ffffff |
 | `on_surface_variant` | `--color-text-secondary` | `text-text-secondary` | #adaaaa |
-| `secondary` | `--color-secondary` | `text-secondary` | #2ff801 |
-| `tertiary` | `--color-tertiary` | `text-tertiary` | #fff252 |
+| `secondary` | `--color-secondary` | `text-secondary` | #39FF14 |
+| `secondary_dim` | `--color-secondary-dim` | `text-secondary-dim` | #2ed611 |
+| `tertiary` | `--color-tertiary` | `text-tertiary` | #FFF01F |
+| `tertiary_dim` | `--color-tertiary-dim` | `text-tertiary-dim` | #d9cc1a |
+| `wa_header` | `--color-wa-header` | `bg-wa-header` | #1a2e35 |
+| `wa_bubble_user` | `--color-wa-bubble-user` | `bg-wa-bubble-user` | #005c4b |
 | `outline_variant` | `--color-border` | `border-border` | rgba(255,255,255,0.08) |
 
 ### CSS Utility Classes
 - `.neon-glow` — 32px blur, primary at 12% opacity
 - `.neon-glow-strong` — 64px blur, primary at 15% opacity
 - `.neon-glow-green` — 32px blur, secondary at 12% opacity
+- `.neon-glow-yellow` — 32px blur, tertiary at 10% opacity
 - `.glass` — backdrop-blur-16px + surface at 70% opacity
 
 ### Reusable Components

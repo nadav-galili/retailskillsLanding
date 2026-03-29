@@ -16,7 +16,7 @@ export default function ProductCTA({
   secondaryHref,
 }: ProductCTAProps) {
   return (
-    <section className="py-20 bg-surface-elevated">
+    <section className="py-28 bg-surface-elevated">
       <div className="text-center max-w-3xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8">{headline}</h2>
         <div className="flex flex-col items-center gap-4">

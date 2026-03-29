@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 import type { ChatMessage } from "@/types";
 import MessageBubble from "./MessageBubble";
 import TypingIndicator from "./TypingIndicator";
@@ -123,10 +125,28 @@ export default function ChatWindow() {
 
   return (
     <div className="flex flex-col h-full">
+      {/* WhatsApp header */}
+      <div className="flex items-center gap-2 px-4 py-3 bg-wa-header">
+        <ChevronRight className="w-5 h-5 text-text-secondary shrink-0" />
+        <Image
+          src="/images/group-avatar.png"
+          alt="Group avatar"
+          width={40}
+          height={40}
+          className="w-10 h-10 rounded-full object-cover shrink-0"
+        />
+        <div className="flex flex-col min-w-0">
+          <span className="text-sm font-medium text-text-primary truncate">
+            מנהלי חנויות — רשת שוק+
+          </span>
+          <span className="text-xs text-text-secondary">15 משתתפים</span>
+        </div>
+      </div>
+
       {/* Messages area */}
       <div
         ref={messagesContainerRef}
-        className="flex-1 overflow-y-auto py-4 px-4"
+        className="flex-1 overflow-y-auto py-4 px-4 bg-surface-card"
       >
         {messages.map((message, index) => (
           <MessageBubble
@@ -144,10 +164,8 @@ export default function ChatWindow() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Scenario buttons - show only when just welcome message */}
-      {messages.length <= 1 && (
-        <ScenarioButtons onSelect={sendMessage} disabled={isLoading} />
-      )}
+      {/* Scenario buttons - always visible */}
+      <ScenarioButtons onSelect={sendMessage} disabled={isLoading} />
 
       {/* Chat input */}
       <ChatInput onSend={sendMessage} disabled={isLoading} />

@@ -65,6 +65,7 @@ const callouts = [
     description: "קבלו סיכום יומי מפורט של כל הרשת בהודעה אחת",
     range: [0.2, 0.28] as [number, number],
     side: "start" as const,
+    accent: "primary" as const,
   },
   {
     icon: <Search className="w-6 h-6" />,
@@ -72,6 +73,7 @@ const callouts = [
     description: "עדכונים אוטומטיים על מבצעים וקמפיינים של המתחרים",
     range: [0.33, 0.42] as [number, number],
     side: "end" as const,
+    accent: "secondary" as const,
   },
   {
     icon: <AlertTriangle className="w-6 h-6" />,
@@ -79,6 +81,7 @@ const callouts = [
     description: "זיהוי אוטומטי של חריגות ודיווח מיידי למנהלים",
     range: [0.42, 0.5] as [number, number],
     side: "start" as const,
+    accent: "tertiary" as const,
   },
   {
     icon: <Megaphone className="w-6 h-6" />,
@@ -86,6 +89,7 @@ const callouts = [
     description: "הפקת קמפיינים מותאמים לרשת בשניות",
     range: [0.61, 0.72] as [number, number],
     side: "end" as const,
+    accent: "secondary" as const,
   },
 ];
 
@@ -172,11 +176,11 @@ export default function WhatsAppShowcase() {
                 >
                   <div className="max-w-[80%]">
                     <div
-                      className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                      className={`px-4 py-3 rounded-xl text-sm leading-relaxed ${
                         msg.type === "user"
-                          ? "bg-[#005c4b] text-white rounded-bl-sm"
+                          ? "bg-wa-bubble-user text-text-primary rounded-bl-sm"
                           : msg.type === "alert"
-                            ? "bg-red-900/30 border border-red-500/30"
+                            ? "bg-tertiary/10 border border-tertiary/20"
                             : "bg-surface-card text-text-primary rounded-br-sm"
                       }`}
                     >
@@ -205,8 +209,8 @@ export default function WhatsAppShowcase() {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="bg-surface/70 backdrop-blur-[16px] rounded-xl p-5 border border-border neon-glow"
             >
-              <div className="mb-3 text-primary">{callout.icon}</div>
-              <h3 className="text-sm font-semibold text-primary mb-1">
+              <div className={`mb-3 ${callout.accent === "secondary" ? "text-secondary" : callout.accent === "tertiary" ? "text-tertiary" : "text-primary"}`}>{callout.icon}</div>
+              <h3 className={`text-sm font-semibold mb-1 ${callout.accent === "secondary" ? "text-secondary" : callout.accent === "tertiary" ? "text-tertiary" : "text-primary"}`}>
                 {callout.title}
               </h3>
               <p className="text-xs leading-relaxed text-text-secondary">
@@ -263,6 +267,7 @@ export default function WhatsAppShowcase() {
                   description={callout.description}
                   scrollProgress={smoothProgress}
                   progressRange={callout.range}
+                  accent={callout.accent}
                 />
               ))}
           </div>
@@ -306,6 +311,7 @@ export default function WhatsAppShowcase() {
                   description={callout.description}
                   scrollProgress={smoothProgress}
                   progressRange={callout.range}
+                  accent={callout.accent}
                 />
               ))}
           </div>
@@ -320,6 +326,7 @@ export default function WhatsAppShowcase() {
                 description={callout.description}
                 scrollProgress={smoothProgress}
                 progressRange={callout.range}
+                accent={callout.accent}
                 className="w-full"
               />
             ))}

@@ -22,8 +22,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-28 bg-surface-elevated">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="relative py-28 bg-surface-elevated overflow-hidden">
+      <div className="absolute top-1/3 end-1/4 w-80 h-80 rounded-full bg-secondary/5 blur-[100px]" />
+      <div className="absolute bottom-1/4 start-1/3 w-64 h-64 rounded-full bg-tertiary/3 blur-[100px]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">
           מה אומרים הלקוחות שלנו
         </h2>

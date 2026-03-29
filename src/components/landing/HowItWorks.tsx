@@ -6,18 +6,21 @@ const steps = [
     icon: Plug,
     title: "מתחברים למערכות שלכם",
     description: "ERP, WhatsApp, CRM — חיבור פשוט וסינכרון אוטומטי",
+    accent: { bg: "bg-primary", text: "text-primary" },
   },
   {
     number: 2,
     icon: Cpu,
     title: "הפלטפורמה עובדת",
     description: "ניתוח, סיכומים, התראות, הדרכות — הכל אוטומטי",
+    accent: { bg: "bg-secondary", text: "text-secondary" },
   },
   {
     number: 3,
     icon: Eye,
     title: "אתם מקבלים שליטה",
     description: "תובנות, דוחות, צוות מיומן — בלחיצת כפתור",
+    accent: { bg: "bg-tertiary", text: "text-tertiary" },
   },
 ];
 
@@ -30,10 +33,10 @@ export default function HowItWorks() {
           {steps.map((step) => (
             <div key={step.number} className="text-center">
               <div className="flex flex-col items-center gap-4 mb-4">
-                <div className="bg-primary text-on-primary w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl">
+                <div className={`${step.accent.bg} text-on-primary w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl`}>
                   {step.number}
                 </div>
-                <step.icon size={32} className="text-primary" />
+                <step.icon size={32} className={step.accent.text} />
               </div>
               <h3 className="text-xl font-bold mb-2">{step.title}</h3>
               <p className="text-text-secondary">{step.description}</p>

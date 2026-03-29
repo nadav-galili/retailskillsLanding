@@ -78,7 +78,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-10 pt-6 text-center text-text-secondary text-sm">
+        <div className="mt-10 pt-6 text-center text-text-secondary text-sm bg-surface-elevated">
           &copy; 2024 Retail-Skillz. כל הזכויות שמורות.
         </div>
       </div>

@@ -58,7 +58,7 @@ export default function DashboardsPage() {
       <FeatureGrid features={features} />
 
       {/* Integrations */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-7xl mx-auto px-4 py-28">
         <h2 className="text-3xl font-bold text-center mb-12">
           מתחבר למערכות המובילות בישראל
         </h2>
@@ -75,7 +75,7 @@ export default function DashboardsPage() {
       </section>
 
       {/* Dashboard Mockup */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-7xl mx-auto px-4 py-28">
         <h2 className="text-3xl font-bold text-center mb-12">
           ראו את הנתונים שלכם
         </h2>

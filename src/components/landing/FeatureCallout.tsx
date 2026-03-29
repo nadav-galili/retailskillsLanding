@@ -9,8 +9,15 @@ interface FeatureCalloutProps {
   description: string;
   scrollProgress: MotionValue<number>;
   progressRange: [number, number];
+  accent?: "primary" | "secondary" | "tertiary";
   className?: string;
 }
+
+const accentMap = {
+  primary: "text-primary",
+  secondary: "text-secondary",
+  tertiary: "text-tertiary",
+};
 
 export default function FeatureCallout({
   icon,
@@ -18,6 +25,7 @@ export default function FeatureCallout({
   description,
   scrollProgress,
   progressRange,
+  accent = "primary",
   className,
 }: FeatureCalloutProps) {
   const opacity = useTransform(scrollProgress, progressRange, [0, 1]);
@@ -34,8 +42,8 @@ export default function FeatureCallout({
         className
       )}
     >
-      <div className="mb-3 text-primary">{icon}</div>
-      <h3 className="text-sm font-semibold text-primary mb-1">{title}</h3>
+      <div className={cn("mb-3", accentMap[accent])}>{icon}</div>
+      <h3 className={cn("text-sm font-semibold mb-1", accentMap[accent])}>{title}</h3>
       <p className="text-xs leading-relaxed text-text-secondary">
         {description}
       </p>

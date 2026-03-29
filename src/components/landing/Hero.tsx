@@ -5,8 +5,9 @@ export default function Hero() {
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-surface">
       {/* Decorative neon glow orbs */}
       <div className="absolute top-20 start-1/4 w-96 h-96 rounded-full bg-primary/8 blur-[80px]" />
-      <div className="absolute bottom-10 end-1/4 w-80 h-80 rounded-full bg-primary-light/10 blur-[80px]" />
+      <div className="absolute bottom-10 end-1/4 w-80 h-80 rounded-full bg-secondary/6 blur-[80px]" />
       <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[100px]" />
+      <div className="absolute bottom-1/3 start-1/3 w-64 h-64 rounded-full bg-tertiary/4 blur-[100px]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <span className="inline-block text-[0.6875rem] uppercase tracking-[0.1em] font-semibold text-tertiary mb-4">

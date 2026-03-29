@@ -82,7 +82,7 @@ export default function WhatsAppBotPage() {
       <FeatureGrid features={features} />
 
       {/* Use Cases */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
+      <section className="max-w-7xl mx-auto px-4 py-28">
         <h2 className="text-3xl font-bold text-center mb-12">למי זה מתאים?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {useCases.map((useCase) => (
@@ -95,7 +95,7 @@ export default function WhatsAppBotPage() {
       </section>
 
       {/* Pricing Hint */}
-      <section className="bg-surface-elevated py-12">
+      <section className="bg-surface-elevated py-28">
         <div className="text-center max-w-3xl mx-auto px-4">
           <p className="text-lg text-text-secondary mb-6">
             מתחיל מ-₪499 לחודש. המחיר נקבע לפי מספר קבוצות וחנויות.

@@ -11,10 +11,16 @@
   --color-accent-light: #00f1fe;
   --color-accent-dark: #66d4dd;
 
-  /* Secondary (neon green) & Tertiary (yellow) */
-  --color-secondary: #2ff801;
+  /* Secondary (neon green) & Tertiary (neon yellow) */
+  --color-secondary: #39FF14;
+  --color-secondary-dim: #2ed611;
   --color-secondary-container: #1a3a0a;
-  --color-tertiary: #fff252;
+  --color-tertiary: #FFF01F;
+  --color-tertiary-dim: #d9cc1a;
+
+  /* WhatsApp-scoped tokens */
+  --color-wa-header: #1a2e35;
+  --color-wa-bubble-user: #005c4b;
 
   /* CTA — neon gradient endpoints */
   --color-cta: #00f1fe;
@@ -58,7 +64,11 @@ body {
 }
 
 .neon-glow-green {
-  box-shadow: 0 0 32px rgba(47, 248, 1, 0.12);
+  box-shadow: 0 0 32px rgba(57, 255, 20, 0.12);
+}
+
+.neon-glow-yellow {
+  box-shadow: 0 0 32px rgba(255, 240, 31, 0.10);
 }
 
 /* Neon Editorial — Glassmorphism */

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { Send } from "lucide-react";
+import { Send, Camera, Mic } from "lucide-react";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -37,8 +37,11 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
     textarea.style.height = `${Math.min(textarea.scrollHeight, maxHeight)}px`;
   };
 
+  const hasText = value.trim().length > 0;
+
   return (
-    <div className="bg-surface-elevated p-4 flex gap-3 items-end">
+    <div className="flex items-end gap-2 px-3 py-2 bg-wa-header">
+      <Camera className="w-5 h-5 text-text-secondary shrink-0 mb-2" />
       <textarea
         ref={textareaRef}
         value={value}
@@ -47,15 +50,19 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
         disabled={disabled}
         placeholder="כתבו הודעה..."
         rows={1}
-        className="bg-surface-lowest border border-border rounded-md px-4 py-3 flex-1 text-text-primary placeholder:text-text-secondary/50 resize-none focus:outline-none focus:border-primary focus:shadow-[0_0_8px_rgba(153,247,255,0.15)] transition-all disabled:opacity-50 disabled:pointer-events-none"
+        className="flex-1 bg-surface-highest/60 rounded-xl px-4 py-2 text-sm text-text-primary placeholder:text-text-secondary/50 resize-none focus:outline-none transition-all disabled:opacity-50 disabled:pointer-events-none"
       />
-      <button
-        onClick={handleSend}
-        disabled={disabled || !value.trim()}
-        className="bg-gradient-to-r from-primary-light to-primary text-on-primary rounded-md p-3 transition-shadow hover:neon-glow disabled:opacity-50 disabled:pointer-events-none"
-      >
-        <Send className="w-5 h-5" />
-      </button>
+      {hasText ? (
+        <button
+          onClick={handleSend}
+          disabled={disabled}
+          className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/20 text-primary transition-colors hover:bg-primary/30 disabled:opacity-50 disabled:pointer-events-none shrink-0"
+        >
+          <Send className="w-4 h-4" />
+        </button>
+      ) : (
+        <Mic className="w-5 h-5 text-text-secondary shrink-0 mb-2" />
+      )}
     </div>
   );
 }

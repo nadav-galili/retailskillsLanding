@@ -58,10 +58,10 @@ export default function ShowcaseMessage({
       <div className="max-w-[80%]">
         <div
           className={cn(
-            "px-4 py-3 rounded-2xl text-sm leading-relaxed",
-            isUser && "bg-[#005c4b] text-white rounded-bl-sm",
+            "px-4 py-3 rounded-xl text-sm leading-relaxed",
+            isUser && "bg-wa-bubble-user text-text-primary rounded-bl-sm",
             type === "bot" && "bg-surface-card text-text-primary rounded-br-sm",
-            isAlert && "bg-red-900/30 border border-red-500/30"
+            isAlert && "bg-tertiary/10 border border-tertiary/20"
           )}
         >
           {formatContent(content)}

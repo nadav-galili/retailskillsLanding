@@ -18,14 +18,15 @@ The full design system is documented in `design.md` at the project root. Read it
 
 ### Color Tokens (defined in `@theme` block in `src/app/globals.css`)
 - **Primary** (neon cyan): `primary` (#99f7ff), `primary-light` (#00f1fe), `primary-dark` (#66d4dd)
-- **Secondary** (neon green): `secondary` (#2ff801) — for active states, chip selection, secondary hover borders
-- **Tertiary** (yellow): `tertiary` (#fff252) — warnings and "New" badges only, use sparingly
+- **Secondary** (neon green): `secondary` (#39FF14), `secondary-dim` (#2ed611) — for active states, chip selection, secondary hover borders, step/stat accents, feature callout icons, hover highlights on interactive elements, background glow orbs (`bg-secondary/5`). A high-energy accent that pairs with primary cyan.
+- **Tertiary** (neon yellow): `tertiary` (#FFF01F), `tertiary-dim` (#d9cc1a) — for eyebrow labels, warning states, "New" badges, stat highlights, step accents, alert message backgrounds (`bg-tertiary/10`), subtle background glow orbs (`bg-tertiary/3`). Use as a warm counterpoint to the cool cyan/green palette.
 - **CTA**: `cta` (#00f1fe) — gradient endpoint. Primary CTAs use `bg-gradient-to-r from-primary-light to-primary`
 - **On-primary**: `on-primary` (#0e0e0e) — dark text on neon backgrounds
 - **Surfaces**: `surface` (#0e0e0e), `surface-lowest` (#000000), `surface-elevated` (#131313), `surface-card` (#1a1919), `surface-high` (#201f1f), `surface-highest` (#262626)
 - **Text**: `text-primary` (#ffffff), `text-secondary` (#adaaaa)
 - **Border**: `border` (ghost — rgba white 8%)
 - **Accent aliases**: `accent`/`accent-light`/`accent-dark` alias to primary values (backward compat — prefer `primary` in new code)
+- **WhatsApp-scoped**: `wa-header` (#1a2e35), `wa-bubble-user` (#005c4b) — only for WhatsApp chat UI mimicry
 - Never use raw color values (e.g., `bg-blue-500`) when a design token exists
 
 ### Neon Editorial Rules

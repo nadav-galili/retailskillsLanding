@@ -5,14 +5,25 @@ import { cn } from "@/lib/utils";
 interface PhoneMockupProps {
   children: React.ReactNode;
   className?: string;
+  size?: "sm" | "lg";
 }
 
-export default function PhoneMockup({ children, className }: PhoneMockupProps) {
+const sizeClasses = {
+  sm: "w-[280px] md:w-[320px] h-[540px] md:h-[580px]",
+  lg: "w-[340px] md:w-[400px] h-[640px] md:h-[720px]",
+};
+
+export default function PhoneMockup({
+  children,
+  className,
+  size = "sm",
+}: PhoneMockupProps) {
   return (
     <div
       dir="rtl"
       className={cn(
-        "relative w-[280px] md:w-[320px] h-[540px] md:h-[580px]",
+        "relative",
+        sizeClasses[size],
         "rounded-[2.5rem] p-[2px]",
         "bg-gradient-to-b from-white/10 to-white/5",
         "neon-glow",
@@ -27,7 +38,7 @@ export default function PhoneMockup({ children, className }: PhoneMockupProps) {
         </div>
 
         {/* WhatsApp header */}
-        <div className="flex items-center gap-2 px-3 py-2 bg-[#1a2e35]">
+        <div className="flex items-center gap-2 px-3 py-2 bg-wa-header">
           <ChevronRight className="w-5 h-5 text-text-secondary shrink-0" />
           <Image
             src="/images/group-avatar.png"
@@ -52,7 +63,7 @@ export default function PhoneMockup({ children, className }: PhoneMockupProps) {
         </div>
 
         {/* Input bar placeholder */}
-        <div className="flex items-center gap-2 px-3 py-2 bg-[#1a2e35]">
+        <div className="flex items-center gap-2 px-3 py-2 bg-wa-header">
           <button
             type="button"
             aria-label="Send"
