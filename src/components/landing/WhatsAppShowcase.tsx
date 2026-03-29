@@ -13,7 +13,16 @@ import {
 import PhoneMockup from "./PhoneMockup";
 import ShowcaseMessage from "./ShowcaseMessage";
 import FeatureCallout from "./FeatureCallout";
+import RainingLetters, { ScrambledText } from "./RainingLetters";
 import Button from "@/components/ui/Button";
+
+const heroScramblePhrases = [
+  "הטכנולוגיה שמנהלת רשתות קמעונאיות",
+  "בוט AI שעובד ישירות בוואטסאפ",
+  "סיכומים אוטומטיים לכל הרשת",
+  "מודיעין תחרותי בזמן אמת",
+  "הטכנולוגיה שמנהלת רשתות קמעונאיות",
+];
 
 /* ── Message data (ranges shifted to make room for hero at 0–0.10) ── */
 const messages = [
@@ -314,6 +323,14 @@ export default function WhatsAppShowcase() {
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
 
+        {/* Raining letters background — fades with hero */}
+        <motion.div
+          style={{ opacity: heroOpacity }}
+          className="absolute inset-0 z-10"
+        >
+          <RainingLetters />
+        </motion.div>
+
         {/* Hero — split layout: text + floating illustration */}
         <motion.div
           style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
@@ -337,7 +354,10 @@ export default function WhatsAppShowcase() {
                 transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-[3.5rem] leading-tight tracking-[-0.04em] font-bold text-text-primary mb-6"
               >
-                הטכנולוגיה שמנהלת רשתות קמעונאיות
+                <ScrambledText
+                  phrases={heroScramblePhrases}
+                  className="inline"
+                />
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 25 }}
