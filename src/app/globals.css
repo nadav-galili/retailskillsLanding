@@ -114,9 +114,43 @@ body {
   animation-delay: 0.4s;
 }
 
+/* Hero floating illustration */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero-float {
+  animation: hero-float 4s ease-in-out infinite;
+}
+
+/* Neon glow pulse behind hero image */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.05); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Scroll hint bounce */
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+.scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}
+
 /* Reduced motion — showcase static fallback */
 @media (prefers-reduced-motion: reduce) {
-  .showcase-static {
+  .showcase-static,
+  .hero-float,
+  .glow-pulse,
+  .scroll-hint {
+    animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }

@@ -8,6 +8,7 @@ import {
   Search,
   AlertTriangle,
   Megaphone,
+  ChevronDown,
 } from "lucide-react";
 import PhoneMockup from "./PhoneMockup";
 import ShowcaseMessage from "./ShowcaseMessage";
@@ -154,33 +155,62 @@ export default function WhatsAppShowcase() {
         className="relative bg-surface-lowest px-4 showcase-static"
         dir="rtl"
       >
-        {/* Mobile hero text */}
+        {/* Mobile hero text with staggered entrance */}
         <div className="min-h-[70vh] flex flex-col items-center justify-center text-center py-16">
-          <span className="inline-block text-[0.6875rem] uppercase tracking-[0.1em] font-semibold text-tertiary mb-4">
+          <motion.span
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-block text-[0.6875rem] uppercase tracking-[0.1em] font-semibold text-tertiary mb-4"
+          >
             פלטפורמת AI לקמעונאות
-          </span>
-          <h1 className="text-4xl leading-tight tracking-[-0.04em] font-bold text-text-primary mb-6">
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl leading-tight tracking-[-0.04em] font-bold text-text-primary mb-6"
+          >
             הטכנולוגיה שמנהלת רשתות קמעונאיות
-          </h1>
-          <p className="text-sm text-text-secondary max-w-[60ch] mx-auto mb-10">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="text-sm text-text-secondary max-w-[60ch] mx-auto mb-10"
+          >
             בוט AI לוואטסאפ, דשבורדים חכמים ופורטל הדרכות — הכל במקום אחד. בעברית.
             לקמעונאות.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          >
             <Button href="/demo" variant="primary" size="lg">
               נסה את הבוט בחינם &larr;
             </Button>
             <Button href="/contact" variant="secondary" size="lg">
               קבע הדגמה
             </Button>
-          </div>
-          <Image
-            src="/images/showcase-hero.png"
-            alt="WhatsApp bot showcase"
-            width={400}
-            height={300}
-            className="w-full max-w-[400px] rounded-xl"
-          />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 -m-8 rounded-full bg-primary/15 blur-[60px] glow-pulse" aria-hidden="true" />
+            <Image
+              src="/images/showcase-hero.png"
+              alt="WhatsApp bot showcase"
+              width={400}
+              height={300}
+              priority
+              className="relative w-full max-w-[400px] rounded-xl hero-float"
+            />
+          </motion.div>
         </div>
 
         {/* Stacked phone + messages */}
@@ -284,32 +314,84 @@ export default function WhatsAppShowcase() {
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
 
-        {/* Hero text — fades out as phone enters */}
+        {/* Hero — split layout: text + floating illustration */}
         <motion.div
           style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
           className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
           dir="rtl"
         >
-          <div className="max-w-4xl mx-auto px-4 text-center pointer-events-auto">
-            <span className="inline-block text-[0.6875rem] uppercase tracking-[0.1em] font-semibold text-tertiary mb-4">
-              פלטפורמת AI לקמעונאות
-            </span>
-            <h2 className="text-[3.5rem] leading-tight tracking-[-0.04em] font-bold text-text-primary mb-6">
-              הטכנולוגיה שמנהלת רשתות קמעונאיות
-            </h2>
-            <p className="text-sm text-text-secondary max-w-[60ch] mx-auto mb-10">
-              בוט AI לוואטסאפ, דשבורדים חכמים ופורטל הדרכות — הכל במקום אחד. בעברית.
-              לקמעונאות.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button href="/demo" variant="primary" size="lg">
-                נסה את הבוט בחינם &larr;
-              </Button>
-              <Button href="/contact" variant="secondary" size="lg">
-                קבע הדגמה
-              </Button>
+          <div className="max-w-7xl w-full mx-auto px-8 flex items-center justify-between gap-12 pointer-events-auto">
+            {/* Text side */}
+            <div className="max-w-xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="inline-block text-[0.6875rem] uppercase tracking-[0.1em] font-semibold text-tertiary mb-4"
+              >
+                פלטפורמת AI לקמעונאות
+              </motion.span>
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-[3.5rem] leading-tight tracking-[-0.04em] font-bold text-text-primary mb-6"
+              >
+                הטכנולוגיה שמנהלת רשתות קמעונאיות
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-sm text-text-secondary max-w-[50ch] mb-10"
+              >
+                בוט AI לוואטסאפ, דשבורדים חכמים ופורטל הדרכות — הכל במקום אחד. בעברית.
+                לקמעונאות.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="flex flex-col sm:flex-row items-start gap-4"
+              >
+                <Button href="/demo" variant="primary" size="lg">
+                  נסה את הבוט בחינם &larr;
+                </Button>
+                <Button href="/contact" variant="secondary" size="lg">
+                  קבע הדגמה
+                </Button>
+              </motion.div>
             </div>
+
+            {/* Illustration side */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="hidden lg:block relative"
+            >
+              {/* Pulsing neon glow behind image */}
+              <div className="absolute inset-0 -m-16 rounded-full bg-primary/15 blur-[80px] glow-pulse" aria-hidden="true" />
+              <Image
+                src="/images/showcase-hero.png"
+                alt="WhatsApp bot showcase — isometric phone with data cards"
+                width={520}
+                height={390}
+                priority
+                className="relative hero-float w-[480px] xl:w-[520px]"
+              />
+            </motion.div>
           </div>
+
+          {/* Scroll hint */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+            className="absolute bottom-8 inset-x-0 flex justify-center pointer-events-none"
+          >
+            <ChevronDown className="w-6 h-6 text-primary/50 scroll-hint" />
+          </motion.div>
         </motion.div>
 
         {/* Phone + callouts container */}
