@@ -14,56 +14,56 @@ import ShowcaseMessage from "./ShowcaseMessage";
 import FeatureCallout from "./FeatureCallout";
 import Button from "@/components/ui/Button";
 
-/* ── Message data ── */
+/* ── Message data (ranges shifted to make room for hero at 0–0.10) ── */
 const messages = [
   {
     type: "user" as const,
     content: "/סיכום",
-    range: [0.15, 0.18] as [number, number],
+    range: [0.18, 0.21] as [number, number],
   },
   {
     type: "bot" as const,
     content:
       "📋 סיכום יומי — 28.03.2026\n✅ 14 מ-15 חנויות דיווחו\n📈 מכירות: ₪847,000 (↑12%)\n⚠️ חנות ת\"א מרכז: חוסר במלאי\n📋 3 משימות פתוחות",
-    range: [0.2, 0.28] as [number, number],
+    range: [0.23, 0.30] as [number, number],
   },
   {
     type: "user" as const,
     content: "מה עושים המתחרים?",
-    range: [0.28, 0.31] as [number, number],
+    range: [0.30, 0.33] as [number, number],
   },
   {
     type: "bot" as const,
     content:
       "🔍 עדכון תחרותי\nרמי לוי: מבצע 1+1 על חלב\nשופרסל: הוזלה 15% ירקות\nיוחננוף: קמפיין חדש ברשתות",
-    range: [0.33, 0.42] as [number, number],
+    range: [0.35, 0.43] as [number, number],
   },
   {
     type: "alert" as const,
     content:
       "🚨 התראה דחופה\nחוסר במלאי — חנות ת\"א מרכז\nמנהל אזור קיבל התראה",
-    range: [0.42, 0.5] as [number, number],
+    range: [0.45, 0.52] as [number, number],
   },
   {
     type: "user" as const,
     content: "תכין קמפיין לסוף שבוע",
-    range: [0.56, 0.59] as [number, number],
+    range: [0.58, 0.61] as [number, number],
   },
   {
     type: "bot" as const,
     content:
       '📢 קמפיין סוף שבוע\n🛒 "סוף שבוע = סל מלא!"\nהנחה 20% על מוצרי בסיס\n📱 קופי לוואטסאפ ושילוט — מוכן!',
-    range: [0.61, 0.72] as [number, number],
+    range: [0.63, 0.73] as [number, number],
   },
 ] as const;
 
-/* ── Callout data ── */
+/* ── Callout data (ranges shifted for hero) ── */
 const callouts = [
   {
     icon: <ClipboardList className="w-6 h-6" />,
     title: "סיכום אוטומטי",
     description: "קבלו סיכום יומי מפורט של כל הרשת בהודעה אחת",
-    range: [0.2, 0.28] as [number, number],
+    range: [0.23, 0.30] as [number, number],
     side: "start" as const,
     accent: "primary" as const,
   },
@@ -71,7 +71,7 @@ const callouts = [
     icon: <Search className="w-6 h-6" />,
     title: "מודיעין תחרותי",
     description: "עדכונים אוטומטיים על מבצעים וקמפיינים של המתחרים",
-    range: [0.33, 0.42] as [number, number],
+    range: [0.35, 0.43] as [number, number],
     side: "end" as const,
     accent: "secondary" as const,
   },
@@ -79,7 +79,7 @@ const callouts = [
     icon: <AlertTriangle className="w-6 h-6" />,
     title: "התראות בזמן אמת",
     description: "זיהוי אוטומטי של חריגות ודיווח מיידי למנהלים",
-    range: [0.42, 0.5] as [number, number],
+    range: [0.45, 0.52] as [number, number],
     side: "start" as const,
     accent: "tertiary" as const,
   },
@@ -87,7 +87,7 @@ const callouts = [
     icon: <Megaphone className="w-6 h-6" />,
     title: "יצירת קמפיינים",
     description: "הפקת קמפיינים מותאמים לרשת בשניות",
-    range: [0.61, 0.72] as [number, number],
+    range: [0.63, 0.73] as [number, number],
     side: "end" as const,
     accent: "secondary" as const,
   },
@@ -124,16 +124,21 @@ export default function WhatsAppShowcase() {
     restDelta: 0.001,
   });
 
-  /* ── Desktop scroll-driven transforms ── */
-  const phoneY = useTransform(smoothProgress, [0, 0.1], [100, 0]);
-  const phoneOpacity = useTransform(smoothProgress, [0, 0.1], [0, 1]);
-  const headerOpacity = useTransform(smoothProgress, [0.1, 0.15], [0, 1]);
+  /* ── Hero text transforms (visible at start, fades out as phone enters) ── */
+  const heroOpacity = useTransform(smoothProgress, [0, 0.06, 0.10], [1, 1, 0]);
+  const heroY = useTransform(smoothProgress, [0.06, 0.10], [0, -60]);
+  const heroScale = useTransform(smoothProgress, [0.06, 0.10], [1, 0.95]);
+
+  /* ── Phone transforms (enters after hero fades) ── */
+  const phoneY = useTransform(smoothProgress, [0.08, 0.16], [120, 0]);
+  const phoneOpacity = useTransform(smoothProgress, [0.08, 0.16], [0, 1]);
+  const headerOpacity = useTransform(smoothProgress, [0.14, 0.18], [0, 1]);
   const phoneScale = useTransform(smoothProgress, [0.85, 1], [1, 0.9]);
-  const ctaOpacity = useTransform(smoothProgress, [0.85, 0.95], [0, 1]);
-  const ctaY = useTransform(smoothProgress, [0.85, 0.95], [30, 0]);
+  const ctaOpacity = useTransform(smoothProgress, [0.87, 0.95], [0, 1]);
+  const ctaY = useTransform(smoothProgress, [0.87, 0.95], [30, 0]);
   const glowShadow = useTransform(
     smoothProgress,
-    [0.1, 0.72, 0.85],
+    [0.14, 0.73, 0.87],
     [
       "0 0 32px rgba(153, 247, 255, 0.12)",
       "0 0 64px rgba(153, 247, 255, 0.25)",
@@ -145,13 +150,30 @@ export default function WhatsAppShowcase() {
   if (isMobile) {
     return (
       <section
-        className="bg-surface-lowest py-28 px-4 showcase-static"
+        ref={containerRef}
+        className="relative bg-surface-lowest px-4 showcase-static"
         dir="rtl"
       >
-        <h2 className="sr-only">הדגמת בוט הוואטסאפ</h2>
-
-        {/* Hero image for mobile */}
-        <div className="flex justify-center mb-12">
+        {/* Mobile hero text */}
+        <div className="min-h-[70vh] flex flex-col items-center justify-center text-center py-16">
+          <span className="inline-block text-[0.6875rem] uppercase tracking-[0.1em] font-semibold text-tertiary mb-4">
+            פלטפורמת AI לקמעונאות
+          </span>
+          <h1 className="text-4xl leading-tight tracking-[-0.04em] font-bold text-text-primary mb-6">
+            הטכנולוגיה שמנהלת רשתות קמעונאיות
+          </h1>
+          <p className="text-sm text-text-secondary max-w-[60ch] mx-auto mb-10">
+            בוט AI לוואטסאפ, דשבורדים חכמים ופורטל הדרכות — הכל במקום אחד. בעברית.
+            לקמעונאות.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <Button href="/demo" variant="primary" size="lg">
+              נסה את הבוט בחינם &larr;
+            </Button>
+            <Button href="/contact" variant="secondary" size="lg">
+              קבע הדגמה
+            </Button>
+          </div>
           <Image
             src="/images/showcase-hero.png"
             alt="WhatsApp bot showcase"
@@ -236,10 +258,10 @@ export default function WhatsAppShowcase() {
     );
   }
 
-  /* ── Desktop: scroll-driven layout ── */
+  /* ── Desktop: scroll-driven layout with integrated hero ── */
   return (
-    <section ref={containerRef} className="relative h-[350vh] bg-surface-lowest">
-      <h2 className="sr-only">הדגמת בוט הוואטסאפ</h2>
+    <section ref={containerRef} className="relative h-[420vh] bg-surface-lowest">
+      <h1 className="sr-only">הטכנולוגיה שמנהלת רשתות קמעונאיות</h1>
 
       {/* Background glow image */}
       <div className="absolute inset-0 overflow-hidden">
@@ -248,12 +270,49 @@ export default function WhatsAppShowcase() {
           alt=""
           fill
           className="object-cover opacity-30"
+          loading="eager"
+          priority
           aria-hidden="true"
         />
       </div>
 
+      {/* Decorative neon glow orbs */}
+      <div className="absolute top-[10vh] start-1/4 w-96 h-96 rounded-full bg-primary/8 blur-[80px]" aria-hidden="true" />
+      <div className="absolute top-[5vh] end-1/3 w-80 h-80 rounded-full bg-secondary/6 blur-[80px]" aria-hidden="true" />
+      <div className="absolute top-[15vh] start-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[100px]" aria-hidden="true" />
+
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+
+        {/* Hero text — fades out as phone enters */}
+        <motion.div
+          style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
+          className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+          dir="rtl"
+        >
+          <div className="max-w-4xl mx-auto px-4 text-center pointer-events-auto">
+            <span className="inline-block text-[0.6875rem] uppercase tracking-[0.1em] font-semibold text-tertiary mb-4">
+              פלטפורמת AI לקמעונאות
+            </span>
+            <h2 className="text-[3.5rem] leading-tight tracking-[-0.04em] font-bold text-text-primary mb-6">
+              הטכנולוגיה שמנהלת רשתות קמעונאיות
+            </h2>
+            <p className="text-sm text-text-secondary max-w-[60ch] mx-auto mb-10">
+              בוט AI לוואטסאפ, דשבורדים חכמים ופורטל הדרכות — הכל במקום אחד. בעברית.
+              לקמעונאות.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button href="/demo" variant="primary" size="lg">
+                נסה את הבוט בחינם &larr;
+              </Button>
+              <Button href="/contact" variant="secondary" size="lg">
+                קבע הדגמה
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Phone + callouts container */}
         <div className="relative flex items-center justify-center" dir="rtl">
           {/* Feature callouts — start side (right in RTL) */}
           <div className="hidden lg:flex flex-col gap-6 absolute end-[calc(50%+180px)] top-1/2 -translate-y-1/2">
@@ -280,6 +339,7 @@ export default function WhatsAppShowcase() {
               scale: phoneScale,
               boxShadow: glowShadow,
             }}
+            className="rounded-[2.5rem]"
             aria-hidden="true"
           >
             <motion.div style={{ opacity: headerOpacity }}>

@@ -1,4 +1,3 @@
-import Hero from "@/components/landing/Hero";
 import WhatsAppShowcase from "@/components/landing/WhatsAppShowcase";
 import Products from "@/components/landing/Products";
 import Stats from "@/components/landing/Stats";
@@ -10,7 +9,6 @@ import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 export default function Home() {
   return (
     <main>
-      <Hero />
       <WhatsAppShowcase />
       <AnimateOnScroll>
         <Products />
